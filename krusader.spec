@@ -7,10 +7,9 @@ License:	GPL
 Group:		X11/Applications
 Source0:	http://dl.sourceforge.net/krusader/%{name}-%{version}.tar.gz
 # Source0-md5:	9fe6f4ccdd9b8a5a1ff2e331ba449ff8
-Patch0:		%{name}-doc.patch
-Patch1:		%{name}-gcc34.patch
-Patch2:		%{name}-desktop.patch
-Patch3:		%{name}-bogus_locale.patch
+Patch0:		%{name}-gcc34.patch
+Patch1:		%{name}-desktop.patch
+Patch2:		%{name}-bogus_locale.patch
 URL:		http://krusader.sourceforge.net/
 BuildRequires:	kdelibs-devel >= 3.1.1
 BuildRequires:	pcre-devel
@@ -37,11 +36,9 @@ ustawialny, bardzo przyjazny dla u¿ytkownika, szybki i cholernie
 
 %prep
 %setup -q
-
-#%%patch0 -p1
+%patch0 -p1
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1
 
 rm -f po/jp.*
 mv -f po/{dk,da}.po
@@ -79,6 +76,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/services/krarc.protocol
 #%%{_datadir}/mimelnk/application/x-ace.desktop # Exists in kdelibs
 %{_desktopdir}/krusader.desktop
-%{_iconsdir}/hicolor/32x32/apps/krusader_red.png
-%{_iconsdir}/hicolor/32x32/apps/krusader.png
+%{_iconsdir}/hicolor/*/apps/krusader_red.png
+%{_iconsdir}/hicolor/*/apps/krusader.png
 %{_mandir}/man1/krusader.1*
