@@ -60,11 +60,11 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/krusader
-%dir %{_datadir}/apps/kursader
-%dir %{_datadir}/apps/kursader/icons
-%dir %{_datadir}/apps/kursader/icons/hicolor
-%dir %{_datadir}/apps/kursader/icons/hicolor/*
-%dir %{_datadir}/apps/kursader/icons/hicolor/*/actions
+%dir %{_datadir}/apps/krusader
+%dir %{_datadir}/apps/krusader/icons
+%dir %{_datadir}/apps/krusader/icons/hicolor
+%dir %{_datadir}/apps/krusader/icons/hicolor/*
+%dir %{_datadir}/apps/krusader/icons/hicolor/*/actions
 %{_datadir}/apps/krusader/icons/hicolor/16x16/actions/*
 %{_datadir}/apps/krusader/icons/hicolor/22x22/actions/*
 %{_datadir}/apps/krusader/icons/hicolor/32x32/actions/*
