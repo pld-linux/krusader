@@ -6,6 +6,7 @@ Release:	1
 License:	GPL
 Group:		X11/Applications
 Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
+# Source0-md5:	3450c67d2b7d5409fe82b7436b7b7204
 URL:		http://krusader.sourceforge.net/
 BuildRequires:	automake
 BuildRequires:	autoconf
