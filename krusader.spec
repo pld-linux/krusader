@@ -1,11 +1,12 @@
 Summary:	Krusader is a filemanager for KDE 3
 Summary(pl):	Krusader jest zarz±dc± plików dla KDE 3
 Name:		krusader
-Version:	1.11
+Version:	1.20
 Release:	1
 License:	GPL
 Group:		X11/Applications
 Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
+# Source0-md5:	cc0d59ab5a8129b3bbbb329487ab1062
 URL:		http://krusader.sourceforge.net
 BuildRequires:	automake
 BuildRequires:	autoconf
@@ -51,28 +52,19 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_applnkdir}/Utilities
 mv $RPM_BUILD_ROOT%{_applnkdir}/Applications/krusader.desktop $RPM_BUILD_ROOT%{_applnkdir}/Utilities/krusader.desktop
 
+%find_lang %{name} --with-kde
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%files
+%files -f %{name}.lang
 %defattr(644,root,root,755)
+#%%doc *
 %attr(755,root,root) %{_prefix}/bin/krusader
 %{_applnkdir}/Utilities/krusader.desktop
-%{_prefix}/share/apps/krusader/icons/hicolor/16x16/actions/*
-%{_prefix}/share/apps/krusader/icons/hicolor/22x22/actions/*
-%{_prefix}/share/apps/krusader/icons/hicolor/32x32/actions/*
-%{_prefix}/share/apps/krusader/konfig_small.jpg
-%{_prefix}/share/apps/krusader/about.png
-%{_prefix}/share/apps/krusader/krusaderui.rc
-/usr/share/doc/kde/HTML/en/krusader/*
-%{_pixmapsdir}/hicolor/32x32/apps/krusader2.png
-%{_pixmapsdir}/hicolor/32x32/apps/krusader.png
-%{_pixmapsdir}/locolor/16x16/apps/krusader.png
-%{_prefix}/share/locale/cs/LC_MESSAGES/krusader.mo
-%{_prefix}/share/locale/de/LC_MESSAGES/krusader.mo
-%{_prefix}/share/locale/dk/LC_MESSAGES/krusader.mo
-%{_prefix}/share/locale/es/LC_MESSAGES/krusader.mo
-%{_prefix}/share/locale/fr/LC_MESSAGES/krusader.mo
-%{_prefix}/share/locale/pl/LC_MESSAGES/krusader.mo
-%{_prefix}/share/locale/sv/LC_MESSAGES/krusader.mo
-%{_prefix}/share/mimelnk/application/x-ace.desktop
+%{_datadir}/apps/%{name}/icons/hicolor/*/actions/*
+%{_datadir}/apps/%{name}/konfig_small.jpg
+%{_datadir}/apps/%{name}/about.png
+%{_datadir}/apps/%{name}/krusaderui.rc
+%{_pixmapsdir}/hicolor/*/apps/krusader*.png
+%{_datadir}/mimelnk/application/x-ace.desktop
