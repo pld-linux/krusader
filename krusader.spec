@@ -8,8 +8,9 @@ Group:		X11/Applications
 Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
 # Source0-md5:	cc0d59ab5a8129b3bbbb329487ab1062
 URL:		http://krusader.sourceforge.net/
-BuildRequires:	automake
 BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	fam-devel
 BuildRequires:	kdelibs-devel >= 3.1.1
 BuildRequires:	qt-devel >= 3.1.2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
