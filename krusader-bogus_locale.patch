@@ -1,0 +1,74 @@
+--- krusader-1.30/po/Makefile.in~	Sat Jul 24 00:34:00 2004
++++ krusader-1.30/po/Makefile.in	Sat Jul 24 00:34:00 2004
+@@ -255,8 +255,8 @@
+ ####### kdevelop will overwrite this part!!! (end)############
+ #>- POFILES = AUTO
+ #>+ 2
+-POFILES = de.po cs.po dk.po es.po fr.po hu.po ja.po it.po jp.po nl.po pl.po ru.po sk.po sv.po
+-GMOFILES = de.gmo cs.gmo dk.gmo es.gmo fr.gmo hu.gmo ja.gmo it.gmo jp.gmo nl.gmo pl.gmo ru.gmo sk.gmo sv.gmo
++POFILES = de.po cs.po da.po es.po fr.po hu.po ja.po it.po nl.po pl.po ru.po sk.po sv.po
++GMOFILES = de.gmo cs.gmo da.gmo es.gmo fr.gmo hu.gmo ja.gmo it.gmo nl.gmo pl.gmo ru.gmo sk.gmo sv.gmo
+ subdir = po
+ mkinstalldirs = $(SHELL) $(top_srcdir)/admin/mkinstalldirs
+ CONFIG_HEADER = $(top_builddir)/config.h
+@@ -292,7 +292,7 @@
+ 
+ #>- DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
+ #>+ 4
+-KDE_DIST=jp.gmo sv.gmo ru.gmo dk.gmo dk.po de.po ja.gmo fr.po cs.po sk.gmo krusader.pot ja.po it.gmo de.gmo es.po es.gmo it.po nl.gmo nl.po pl.gmo ru.po fr.gmo cs.gmo sv.po hu.po jp.po pl.po sk.po hu.gmo 
++KDE_DIST=sv.gmo ru.gmo da.gmo da.po de.po ja.gmo fr.po cs.po sk.gmo krusader.pot ja.po it.gmo de.gmo es.po es.gmo it.po nl.gmo nl.po pl.gmo ru.po fr.gmo cs.gmo sv.po hu.po pl.po sk.po hu.gmo 
+ 
+ #>- DISTFILES= $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST) $(KDE_DIST)
+ #>+ 1
+@@ -422,9 +422,9 @@
+ cs.gmo: cs.po
+ 	rm -f cs.gmo; $(GMSGFMT) -o cs.gmo $(srcdir)/cs.po
+ 	test ! -f cs.gmo || touch cs.gmo
+-dk.gmo: dk.po
+-	rm -f dk.gmo; $(GMSGFMT) -o dk.gmo $(srcdir)/dk.po
+-	test ! -f dk.gmo || touch dk.gmo
++da.gmo: da.po
++	rm -f da.gmo; $(GMSGFMT) -o da.gmo $(srcdir)/da.po
++	test ! -f da.gmo || touch da.gmo
+ es.gmo: es.po
+ 	rm -f es.gmo; $(GMSGFMT) -o es.gmo $(srcdir)/es.po
+ 	test ! -f es.gmo || touch es.gmo
+@@ -440,9 +440,6 @@
+ it.gmo: it.po
+ 	rm -f it.gmo; $(GMSGFMT) -o it.gmo $(srcdir)/it.po
+ 	test ! -f it.gmo || touch it.gmo
+-jp.gmo: jp.po
+-	rm -f jp.gmo; $(GMSGFMT) -o jp.gmo $(srcdir)/jp.po
+-	test ! -f jp.gmo || touch jp.gmo
+ nl.gmo: nl.po
+ 	rm -f nl.gmo; $(GMSGFMT) -o nl.gmo $(srcdir)/nl.po
+ 	test ! -f nl.gmo || touch nl.gmo
+@@ -461,11 +458,11 @@
+ 
+ #>+ 3
+ clean-nls:
+-	-rm -f  de.gmo cs.gmo dk.gmo es.gmo fr.gmo hu.gmo ja.gmo it.gmo jp.gmo nl.gmo pl.gmo ru.gmo sk.gmo sv.gmo
++	-rm -f  de.gmo cs.gmo da.gmo es.gmo fr.gmo hu.gmo ja.gmo it.gmo nl.gmo pl.gmo ru.gmo sk.gmo sv.gmo
+ 
+ #>+ 10
+ install-nls:
+-	@for base in de cs dk es fr hu ja it jp nl pl ru sk sv ; do \
++	@for base in de cs da es fr hu ja it nl pl ru sk sv ; do \
+ 	  echo $(INSTALL_DATA) $$base.gmo $(DESTDIR)$(kde_locale)/$$base/LC_MESSAGES/$(PACKAGE).mo ;\
+ 	  $(mkinstalldirs) $(DESTDIR)$(kde_locale)/$$base/LC_MESSAGES ; \
+ 	  if test -f $$base.gmo; then $(INSTALL_DATA) $$base.gmo $(DESTDIR)$(kde_locale)/$$base/LC_MESSAGES/$(PACKAGE).mo ;\
+@@ -478,13 +475,12 @@
+ uninstall-nls:
+ 	rm -f $(DESTDIR)$(kde_locale)/de/LC_MESSAGES/$(PACKAGE).mo
+ 	rm -f $(DESTDIR)$(kde_locale)/cs/LC_MESSAGES/$(PACKAGE).mo
+-	rm -f $(DESTDIR)$(kde_locale)/dk/LC_MESSAGES/$(PACKAGE).mo
++	rm -f $(DESTDIR)$(kde_locale)/da/LC_MESSAGES/$(PACKAGE).mo
+ 	rm -f $(DESTDIR)$(kde_locale)/es/LC_MESSAGES/$(PACKAGE).mo
+ 	rm -f $(DESTDIR)$(kde_locale)/fr/LC_MESSAGES/$(PACKAGE).mo
+ 	rm -f $(DESTDIR)$(kde_locale)/hu/LC_MESSAGES/$(PACKAGE).mo
+ 	rm -f $(DESTDIR)$(kde_locale)/ja/LC_MESSAGES/$(PACKAGE).mo
+ 	rm -f $(DESTDIR)$(kde_locale)/it/LC_MESSAGES/$(PACKAGE).mo
+-	rm -f $(DESTDIR)$(kde_locale)/jp/LC_MESSAGES/$(PACKAGE).mo
+ 	rm -f $(DESTDIR)$(kde_locale)/nl/LC_MESSAGES/$(PACKAGE).mo
+ 	rm -f $(DESTDIR)$(kde_locale)/pl/LC_MESSAGES/$(PACKAGE).mo
+ 	rm -f $(DESTDIR)$(kde_locale)/ru/LC_MESSAGES/$(PACKAGE).mo
