@@ -43,7 +43,7 @@ ustawialny, bardzo przyjazny dla u¿ytkownika, szybki i cholernie
 %patch1 -p0
 %patch2 -p0
 #%%patch3 -p0
-%patch4	-p1
+%patch4 -p1
 
 %build
 cp -f /usr/share/automake/config.sub admin
