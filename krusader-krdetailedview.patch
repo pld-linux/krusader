@@ -1,0 +1,12 @@
+--- krusader/Panel/krdetailedview.cpp	2004-10-24 18:17:31.000000000 +0200
++++ krusader/Panel/krdetailedview.cpp	2004-10-31 16:50:49.000000000 +0100
+@@ -1034,8 +1034,8 @@
+       if ( item == startItem )
+          return ;
+       if ( caseSensitive ? item->name().startsWith( str ) : item->name().lower().startsWith( str.lower() ) ) {
+-         makeItemVisible( item );
+          setCurrentItem( item->name() );
++			makeItemVisible( item );
+          return ;
+       }
+    }
