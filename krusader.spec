@@ -6,11 +6,9 @@ Release:	0.1
 License:	GPL
 Group:		X11/Applications
 Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
-# Source0:	http://dl.sourceforge.net/%{name}/%{fn}.tar.gz
 # Source0-md5:	a4f248257f7b30d995caa4dcb014d1ca
+Patch0:		%{name}-doc.patch
 URL:		http://krusader.sourceforge.net/
-BuildRequires:	autoconf
-BuildRequires:	automake
 BuildRequires:	fam-devel
 BuildRequires:	kdelibs-devel >= 3.1.1
 BuildRequires:	libart_lgpl-devel
@@ -39,6 +37,7 @@ ustawialny, bardzo przyjazny dla u¿ytkownika, szybki i cholernie
 
 %prep
 %setup -q -n %{name}-%{version}
+%patch -p1
 
 %build
 export QTDIR=%{_prefix}
@@ -58,7 +57,8 @@ install -d $RPM_BUILD_ROOT%{_applnkdir}/Utilities
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-mv $RPM_BUILD_ROOT%{_applnkdir}/Applications/krusader.desktop $RPM_BUILD_ROOT%{_applnkdir}/Utilities/krusader.desktop
+mv -f $RPM_BUILD_ROOT%{_applnkdir}/Applications/krusader.desktop \
+	$RPM_BUILD_ROOT%{_applnkdir}/Utilities/krusader.desktop
 
 %find_lang %{name} --with-kde
 
@@ -68,19 +68,13 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/krusader
-%dir %{_datadir}/apps/krusader
-%dir %{_datadir}/apps/krusader/icons
-%dir %{_datadir}/apps/krusader/icons/hicolor
-%dir %{_datadir}/apps/krusader/icons/hicolor/*
-%dir %{_datadir}/apps/krusader/icons/hicolor/*/actions
-%{_datadir}/apps/krusader/icons/hicolor/16x16/actions/*
-%{_datadir}/apps/krusader/icons/hicolor/22x22/actions/*
-%{_datadir}/apps/krusader/icons/hicolor/32x32/actions/*
-%{_datadir}/apps/krusader/konfig_small.jpg
-%{_datadir}/apps/krusader/about.png
-%{_datadir}/apps/krusader/krusaderui.rc
+%attr(755,root,root) %{_libdir}/kde3/kio_krarc.so
+%{_libdir}/kde3/kio_krarc.la
+%{_datadir}/apps/krusader
+%{_datadir}/services/krarc.protocol
+%{_datadir}/mimelnk/application/x-ace.desktop
 %{_applnkdir}/Utilities/krusader.desktop
 %{_pixmapsdir}/hicolor/32x32/apps/krusader2.png
 %{_pixmapsdir}/hicolor/32x32/apps/krusader.png
 %{_pixmapsdir}/locolor/16x16/apps/krusader.png
-%{_datadir}/mimelnk/application/x-ace.desktop
+%{_mandir}/man1/krusader.1*
