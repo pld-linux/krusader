@@ -10,8 +10,11 @@ Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
 URL:		http://krusader.sourceforge.net
 BuildRequires:	automake
 BuildRequires:	autoconf
+BuildRequires:	fam-devel
 BuildRequires:	kdelibs-devel >= 3.1.1
+BuildRequires:  libart_lgpl-devel
 BuildRequires:	qt-devel >= 3.1.2
+
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_prefix		/usr/X11R6
