@@ -14,9 +14,8 @@ URL:		http://krusader.sourceforge.net/
 BuildRequires:	kdelibs-devel >= 3.1.1
 BuildRequires:	pcre-devel
 BuildRequires:	qt-devel >= 3.1.2
+BuildRequires:	rpmbuild(macros) >= 1.129
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-
-%define		_htmldir	/usr/share/doc/kde/HTML
 
 %description
 Krusader is a filemanager for KDE 3, patterned after old-school
