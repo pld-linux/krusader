@@ -2,20 +2,21 @@ Summary:	Krusader is a filemanager for KDE 3
 Summary(pl):	Krusader jest zarz±dc± plików dla KDE 3
 Name:		krusader
 Version:	1.50
-Release:	0.1
+Release:	1
 License:	GPL
 Group:		X11/Applications
 Source0:	http://dl.sourceforge.net/krusader/%{name}-%{version}.tar.gz
 # Source0-md5:	24f86f89aa8fc10afa64afe9b966ca94
 Patch0:		%{name}-desktop.patch
 Patch1:		%{name}-mount.patch
-Patch2:		%{name}-krdetailedview.patch
+Patch2:		%{name}-cvs.patch
 Patch3:		%{name}-gcc34.patch
+Patch4:		%{name}-no_konqueror_libs.patch
 URL:		http://krusader.sourceforge.net/
 BuildRequires:	automake
-BuildRequires:	kdelibs-devel >= 3.1.1
+BuildRequires:	kdelibs-devel >= 3.2
 BuildRequires:	pcre-devel
-BuildRequires:	qt-devel >= 3.1.2
+BuildRequires:	qt-devel >= 3.2
 BuildRequires:	rpmbuild(macros) >= 1.129
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -42,6 +43,7 @@ ustawialny, bardzo przyjazny dla u¿ytkownika, szybki i cholernie
 %patch1 -p0
 %patch2 -p0
 #%%patch3 -p0
+%patch4	-p1
 
 %build
 cp -f /usr/share/automake/config.sub admin
