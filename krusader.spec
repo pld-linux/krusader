@@ -1,12 +1,13 @@
 Summary:	Krusader is a filemanager for KDE 3
 Summary(pl):	Krusader jest zarz±dc± plików dla KDE 3
 Name:		krusader
-Version:	1.20
-Release:	1
+Version:	1.29
+%define unstable beta1
+Release:	0.1
 License:	GPL
 Group:		X11/Applications
-Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
-# Source0-md5:	cc0d59ab5a8129b3bbbb329487ab1062
+Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}-%{unstable}.tar.gz
+# Source0-md5:	acda57ded45878726aaa703af3961921
 URL:		http://krusader.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -14,6 +15,7 @@ BuildRequires:	fam-devel
 BuildRequires:	kdelibs-devel >= 3.1.1
 BuildRequires:	libart_lgpl-devel
 BuildRequires:	qt-devel >= 3.1.2
+BuildRequires:	xrender-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_htmldir	/usr/share/doc/kde/HTML
@@ -36,9 +38,11 @@ ustawialny, bardzo przyjazny dla u¿ytkownika, szybki i cholernie
 ³adny :-). Powiniene¶ go wypróbowaæ.
 
 %prep
-%setup -q
+%setup -q -n %{name}-%{version}-beta
 
 %build
+export QTDIR=%{_prefix}
+export KDEDIR=%{_prefix}
 kde_appsdir="%{_applnkdir}"; export kde_appsdir
 kde_htmldir="%{_htmldir}"; export kde_htmldir
 kde_icondir="%{_pixmapsdir}"; export kde_icondir
