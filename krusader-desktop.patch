@@ -1,0 +1,19 @@
+--- krusader-1.30/krusader/krusader.desktop.orig	Mon Apr 15 20:47:20 2002
++++ krusader-1.30/krusader/krusader.desktop	Thu Jul 15 12:40:08 2004
+@@ -1,11 +1,14 @@
+ # KDE Config File  
+ [Desktop Entry]
++Encoding=UTF-8
+ Type=Application
+ Exec=krusader -caption "%c" %i %m  
+ Icon=krusader.png
+ MiniIcon=krusader.png
+ DocPath=krusader/index.html
+ Comment=Twin-Panel File Manager
+-Terminal=0
++Comment[pl]=Dwupanelowy zarządca plików
++Terminal=false
+ Name=Krusader
+-
++Categories=Qt;KDE;Utility;FileManager;
++# vi: encoding=utf-8
