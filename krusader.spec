@@ -10,8 +10,8 @@ Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
 URL:		http://krusader.sourceforge.net
 BuildRequires:	automake
 BuildRequires:	autoconf
-BuildRequires:	kdelibs-devel >= 3
-BuildRequires:	qt-devel >= 3.0.3
+BuildRequires:	kdelibs-devel >= 3.1.1
+BuildRequires:	qt-devel >= 3.1.2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_prefix		/usr/X11R6
@@ -46,10 +46,11 @@ kde_icondir="%{_pixmapsdir}"; export kde_icondir
 
 %install
 rm -rf $RPM_BUILD_ROOT
-
-%{__make} install DESTDIR=$RPM_BUILD_ROOT
-
 install -d $RPM_BUILD_ROOT%{_applnkdir}/Utilities
+
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
+
 mv $RPM_BUILD_ROOT%{_applnkdir}/Applications/krusader.desktop $RPM_BUILD_ROOT%{_applnkdir}/Utilities/krusader.desktop
 
 %find_lang %{name} --with-kde
