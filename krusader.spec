@@ -21,7 +21,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Krusader is a filemanager for KDE 3, patterned after old-school
 managers like midnight commander and norton commander. It features
 basically all your file-management needs, plus extensive archive
-handling, mounted filesystems support, ftp and much much more. It is
+handling, mounted filesystems support, FTP and much much more. It is
 (almost) completely customizable, very user friendly, fast and damn
 good looking :-). You should give it a try.
 
@@ -30,7 +30,7 @@ Krusader jest zarz±dc± plików dla KDE 3, wzorowanym na takich
 zarz±dcach "starej szko³y", jak Midnight Commander czy Norton
 Commander. Zaspokaja w zasadzie wszystkie podstawowe potrzeby w
 zarz±dzaniu plików, dodatkowo obs³uguje archiwa, montowanie systemów
-plików, ftp i o wiele, wiele wiêcej. Jest (prawie) ca³kowicie
+plików, FTP i o wiele, wiele wiêcej. Jest (prawie) ca³kowicie
 ustawialny, bardzo przyjazny dla u¿ytkownika, szybki i cholernie
 ³adny :-). Powiniene¶ go wypróbowaæ.
 
