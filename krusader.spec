@@ -9,11 +9,9 @@ Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
 # Source0-md5:	a4f248257f7b30d995caa4dcb014d1ca
 Patch0:		%{name}-doc.patch
 URL:		http://krusader.sourceforge.net/
-BuildRequires:	fam-devel
 BuildRequires:	kdelibs-devel >= 3.1.1
-BuildRequires:	libart_lgpl-devel
+BuildRequires:	pcre-devel
 BuildRequires:	qt-devel >= 3.1.2
-BuildRequires:	xrender-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_htmldir	/usr/share/doc/kde/HTML
