@@ -1,12 +1,13 @@
+%define		_beta	beta1
 Summary:	Krusader is a filemanager for KDE 3
 Summary(pl):	Krusader jest zarz±dc± plików dla KDE 3
 Name:		krusader
-Version:	1.51
-Release:	1
+Version:	1.60
+Release:	0.%{_beta}.1
 License:	GPL
 Group:		X11/Applications
-Source0:	http://dl.sourceforge.net/krusader/%{name}-%{version}.tar.gz
-# Source0-md5:	3b31a49db60b9e7f0884d78ed1ee3eb6
+Source0:	http://dl.sourceforge.net/krusader/%{name}-%{version}.0-%{_beta}.tar.gz
+# Source0-md5:	808deb5e68ed11eeee6589cda0162f83
 Patch0:		%{name}-desktop.patch
 Patch1:		%{name}-mount.patch
 Patch2:		%{name}-gcc34.patch
@@ -37,8 +38,8 @@ ustawialny, bardzo przyjazny dla u¿ytkownika, szybki i cholernie
 ³adny :-). Powiniene¶ go wypróbowaæ.
 
 %prep
-%setup -q
-%patch0 -p0
+%setup -q -n %{name}-%{version}.0-%{_beta}
+%patch0 -p1
 %patch1 -p0
 #%%patch2 -p0
 %patch3 -p1
@@ -64,6 +65,8 @@ install -d $RPM_BUILD_ROOT%{_desktopdir}
 
 mv -f $RPM_BUILD_ROOT%{_datadir}/applnk/Applications/krusader.desktop \
 	$RPM_BUILD_ROOT%{_desktopdir}/krusader.desktop
+mv -f $RPM_BUILD_ROOT%{_datadir}/applnk/Applications/krusader_root-mode.desktop \
+	$RPM_BUILD_ROOT%{_desktopdir}/krusader_root-mode.desktop
 
 %find_lang %{name} --with-kde
 
@@ -82,7 +85,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/services/iso.protocol
 %{_datadir}/apps/konqueror/servicemenus/isoservice.desktop
 %{_datadir}/config/kio_isorc
-%{_desktopdir}/krusader.desktop
+%{_desktopdir}/*.desktop
 %{_iconsdir}/hicolor/*/apps/krusader_red.png
 %{_iconsdir}/hicolor/*/apps/krusader.png
 %{_mandir}/man1/krusader.1*
