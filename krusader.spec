@@ -1,16 +1,18 @@
 Summary:	Krusader is a filemanager for KDE 3
 Summary(pl):	Krusader jest zarz±dc± plików dla KDE 3
 Name:		krusader
-Version:	1.40
-Release:	1
+Version:	1.50
+Release:	0.1
 License:	GPL
 Group:		X11/Applications
 Source0:	http://dl.sourceforge.net/krusader/%{name}-%{version}.tar.gz
-# Source0-md5:	9fe6f4ccdd9b8a5a1ff2e331ba449ff8
-Patch0:		%{name}-gcc34.patch
-Patch1:		%{name}-desktop.patch
-Patch2:		%{name}-bogus_locale.patch
+# Source0-md5:	24f86f89aa8fc10afa64afe9b966ca94
+Patch0:		%{name}-desktop.patch
+Patch1:		%{name}-mount.patch
+Patch2:		%{name}-krdetailedview.patch
+Patch3:		%{name}-gcc34.patch
 URL:		http://krusader.sourceforge.net/
+BuildRequires:	automake
 BuildRequires:	kdelibs-devel >= 3.1.1
 BuildRequires:	pcre-devel
 BuildRequires:	qt-devel >= 3.1.2
@@ -36,20 +38,18 @@ ustawialny, bardzo przyjazny dla u¿ytkownika, szybki i cholernie
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-
-rm -f po/jp.*
-mv -f po/{dk,da}.po
+%patch0 -p0
+%patch1 -p0
+%patch2 -p0
+#%%patch3 -p0
 
 %build
 cp -f /usr/share/automake/config.sub admin
 export QTDIR=%{_prefix}
 export KDEDIR=%{_prefix}
-kde_htmldir="%{_kdedocdir}"; export kde_htmldir
 %configure \
 	--disable-rpath \
+	--disable-debug \
 	--with-qt-libraries=%{_libdir}
 
 %{__make}
@@ -59,7 +59,8 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_desktopdir}
 
 %{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT
+	DESTDIR=$RPM_BUILD_ROOT \
+	kde_htmldir=%{_kdedocdir}
 
 mv -f $RPM_BUILD_ROOT%{_datadir}/applnk/Applications/krusader.desktop \
 	$RPM_BUILD_ROOT%{_desktopdir}/krusader.desktop
@@ -73,10 +74,14 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/krusader
 %attr(755,root,root) %{_libdir}/kde3/kio_krarc.so
+%attr(755,root,root) %{_libdir}/kde3/kio_iso.so
 %{_libdir}/kde3/kio_krarc.la
+%{_libdir}/kde3/kio_iso.la
 %{_datadir}/apps/krusader
 %{_datadir}/services/krarc.protocol
-#%%{_datadir}/mimelnk/application/x-ace.desktop # Exists in kdelibs
+%{_datadir}/services/iso.protocol
+%{_datadir}/apps/konqueror/servicemenus/isoservice.desktop
+%{_datadir}/config/kio_isorc
 %{_desktopdir}/krusader.desktop
 %{_iconsdir}/hicolor/*/apps/krusader_red.png
 %{_iconsdir}/hicolor/*/apps/krusader.png
