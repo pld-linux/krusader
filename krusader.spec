@@ -5,13 +5,13 @@ Version:	1.20
 Release:	1
 License:	GPL
 Group:		X11/Applications
-# Source0-md5:	cc0d59ab5a8129b3bbbb329487ab1062
 Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
+# Source0-md5:	cc0d59ab5a8129b3bbbb329487ab1062
 URL:		http://krusader.sourceforge.net/
 BuildRequires:	automake
 BuildRequires:	autoconf
-BuildRequires:	kdelibs-devel >= 3
-BuildRequires:	qt-devel >= 3.0.3
+BuildRequires:	kdelibs-devel >= 3.1.1
+BuildRequires:	qt-devel >= 3.1.2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_htmldir	/usr/share/doc/kde/HTML
@@ -47,10 +47,11 @@ kde_icondir="%{_pixmapsdir}"; export kde_icondir
 
 %install
 rm -rf $RPM_BUILD_ROOT
-
-%{__make} install DESTDIR=$RPM_BUILD_ROOT
-
 install -d $RPM_BUILD_ROOT%{_applnkdir}/Utilities
+
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
+
 mv $RPM_BUILD_ROOT%{_applnkdir}/Applications/krusader.desktop $RPM_BUILD_ROOT%{_applnkdir}/Utilities/krusader.desktop
 
 %find_lang %{name} --with-kde
