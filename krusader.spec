@@ -44,7 +44,7 @@ ustawialny, bardzo przyjazny dla u¿ytkownika, szybki i cholernie
 cp -f /usr/share/automake/config.sub admin
 export QTDIR=%{_prefix}
 export KDEDIR=%{_prefix}
-kde_htmldir="%{_kde_docdir}"; export kde_htmldir
+kde_htmldir="%{_kdedocdir}"; export kde_htmldir
 %configure
 
 %{__make}
