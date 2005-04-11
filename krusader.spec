@@ -1,23 +1,27 @@
-%define		_beta	beta2
+#
+# Conditional build:
+%bcond_with	libkonq		# importing the right click menu of konqueror
+#
 Summary:	Krusader is a filemanager for KDE 3
 Summary(pl):	Krusader jest zarz±dc± plików dla KDE 3
 Name:		krusader
-Version:	1.60
-Release:	0.%{_beta}.2
+Version:	1.60.0
+Release:	1
 License:	GPL
 Group:		X11/Applications
-Source0:	http://dl.sourceforge.net/krusader/%{name}-%{version}.0-%{_beta}.tar.gz
-# Source0-md5:	82ff0b1dde42d733a1009c67be45214d
+Source0:	http://dl.sourceforge.net/krusader/%{name}-%{version}.tar.gz
+# Source0-md5:	95f7900799bbd2810e6ac06fbf628536
 Patch0:		%{name}-desktop.patch
 Patch1:		%{name}-mount.patch
 Patch2:		%{name}-gcc34.patch
-Patch3:		%{name}-no_konqueror_libs.patch
 URL:		http://krusader.sourceforge.net/
 BuildRequires:	automake
+%{?with_libkonq:BuildRequires:	kdebase-devel}
 BuildRequires:	kdebindings-kjsembed-devel
-BuildRequires:	kdelibs-devel >= 3.2
-BuildRequires:	qt-devel >= 3.2
+BuildRequires:	kdelibs-devel >= 3.3
+BuildRequires:	qt-devel >= 3.3
 BuildRequires:	rpmbuild(macros) >= 1.129
+BuildRequires:	sed >= 4.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -38,13 +42,13 @@ ustawialny, bardzo przyjazny dla u¿ytkownika, szybki i cholernie
 ³adny :-). Powiniene¶ go wypróbowaæ.
 
 %prep
-%setup -q -n %{name}-%{version}.0-%{_beta}
+%setup -q
 %patch0 -p1
 %patch1 -p0
 #%%patch2 -p0
-%patch3 -p1
 
 %build
+%{!?with_libkonq:%{__sed} -i 's,have_libkonq=yes,have_libkonq=no,' configure*}
 cp -f /usr/share/automake/config.sub admin
 export QTDIR=%{_prefix}
 export KDEDIR=%{_prefix}
@@ -86,6 +90,5 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/apps/konqueror/servicemenus/isoservice.desktop
 %{_datadir}/config/kio_isorc
 %{_desktopdir}/*.desktop
-%{_iconsdir}/hicolor/*/apps/krusader_red.png
-%{_iconsdir}/hicolor/*/apps/krusader.png
+%{_iconsdir}/hicolor/*/apps/*.png
 %{_mandir}/man1/krusader.1*
