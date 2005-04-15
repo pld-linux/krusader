@@ -16,6 +16,7 @@ Patch0:		%{name}-desktop.patch
 Patch1:		%{name}-mount.patch
 Patch2:		%{name}-gcc34.patch
 URL:		http://krusader.sourceforge.net/
+BuildRequires:	autoconf
 BuildRequires:	automake
 %{?with_libkonq:BuildRequires:	kdebase-devel}
 %{?with_libkjsembed:BuildRequires:	kdebindings-kjsembed-devel}
