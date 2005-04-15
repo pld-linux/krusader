@@ -1,6 +1,7 @@
 #
 # Conditional build:
 %bcond_with	libkonq		# importing the right click menu of konqueror
+%bcond_with	libkjsembed	# with libkjsembed
 #
 Summary:	Krusader is a filemanager for KDE 3
 Summary(pl):	Krusader jest zarz±dc± plików dla KDE 3
@@ -17,7 +18,7 @@ Patch2:		%{name}-gcc34.patch
 URL:		http://krusader.sourceforge.net/
 BuildRequires:	automake
 %{?with_libkonq:BuildRequires:	kdebase-devel}
-BuildRequires:	kdebindings-kjsembed-devel
+%{?with_libkjsembed:BuildRequires:	kdebindings-kjsembed-devel}
 BuildRequires:	kdelibs-devel >= 3.3
 BuildRequires:	qt-devel >= 3.3
 BuildRequires:	rpmbuild(macros) >= 1.129
@@ -49,6 +50,7 @@ ustawialny, bardzo przyjazny dla u¿ytkownika, szybki i cholernie
 
 %build
 %{!?with_libkonq:%{__sed} -i 's,have_libkonq=yes,have_libkonq=no,' configure*}
+%{!?with_libkjsembed:%{__sed} -i 's,have_libkjsembed=yes,have_libkjsembed=no,' configure*}
 cp -f /usr/share/automake/config.sub admin
 export QTDIR=%{_prefix}
 export KDEDIR=%{_prefix}
