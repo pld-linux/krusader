@@ -3,21 +3,23 @@
 %bcond_without	libkonq		# importing the right click menu of konqueror
 %bcond_without	libkjsembed	# with libkjsembed
 #
+%define		_beta	beta1
 Summary:	Krusader is a filemanager for KDE 3
 Summary(pl):	Krusader jest zarz±dc± plików dla KDE 3
 Name:		krusader
-Version:	1.60.0
-Release:	1
+Version:	1.70.0
+Release:	%{_beta}.1
 License:	GPL
 Group:		X11/Applications
-Source0:	http://dl.sourceforge.net/krusader/%{name}-%{version}.tar.gz
-# Source0-md5:	95f7900799bbd2810e6ac06fbf628536
+Source0:	http://dl.sourceforge.net/krusader/%{name}-%{version}-%{_beta}.tar.gz
+# Source0-md5:	88f2f0593ca4f6736f2108d76b8cdcf0
 Patch0:		%{name}-desktop.patch
 Patch1:		%{name}-mount.patch
-Patch2:		%{name}-gcc34.patch
+Patch2:		%{name}-krviewer.patch
 URL:		http://krusader.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
+BuildRequires:	gettext-devel
 %{?with_libkonq:BuildRequires:	kdebase-devel}
 %{?with_libkjsembed:BuildRequires:	kdebindings-kjsembed-devel}
 BuildRequires:	kdelibs-devel >= 3.3
@@ -44,20 +46,20 @@ ustawialny, bardzo przyjazny dla u¿ytkownika, szybki i cholernie
 ³adny :-). Powiniene¶ go wypróbowaæ.
 
 %prep
-%setup -q
+%setup -q -n %{name}-%{version}-%{_beta}
 %patch0 -p1
 %patch1 -p0
-#%%patch2 -p0
+%patch2 -p1
 
 %build
-%{!?with_libkonq:%{__sed} -i 's,have_libkonq=yes,have_libkonq=no,' configure*}
-%{!?with_libkjsembed:%{__sed} -i 's,have_libkjsembed=yes,have_libkjsembed=no,' configure*}
 cp -f /usr/share/automake/config.sub admin
 export QTDIR=%{_prefix}
 export KDEDIR=%{_prefix}
 %configure \
 	--disable-rpath \
-	--disable-debug \
+	%{!?with_libkonq:--without-konqueror} \
+	%{!?with_libkjsembed:--without-javascript} \
+	--%{?debug:en}%{!?debug:dis}able-debug%{?debug:=full} \
 	--with-qt-libraries=%{_libdir}
 
 %{__make}
@@ -70,9 +72,9 @@ install -d $RPM_BUILD_ROOT%{_desktopdir}
 	DESTDIR=$RPM_BUILD_ROOT \
 	kde_htmldir=%{_kdedocdir}
 
-mv -f $RPM_BUILD_ROOT%{_datadir}/applnk/Applications/krusader.desktop \
+mv -f $RPM_BUILD_ROOT%{_datadir}/applnk/krusader.desktop \
 	$RPM_BUILD_ROOT%{_desktopdir}/krusader.desktop
-mv -f $RPM_BUILD_ROOT%{_datadir}/applnk/Applications/krusader_root-mode.desktop \
+mv -f $RPM_BUILD_ROOT%{_datadir}/applnk/krusader_root-mode.desktop \
 	$RPM_BUILD_ROOT%{_desktopdir}/krusader_root-mode.desktop
 
 %find_lang %{name} --with-kde
@@ -82,16 +84,17 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
+%doc AUTHORS ChangeLog FAQ README TODO doc/actions_tutorial.txt
 %attr(755,root,root) %{_bindir}/krusader
 %attr(755,root,root) %{_libdir}/kde3/kio_krarc.so
 %attr(755,root,root) %{_libdir}/kde3/kio_iso.so
 %{_libdir}/kde3/kio_krarc.la
 %{_libdir}/kde3/kio_iso.la
 %{_datadir}/apps/krusader
-%{_datadir}/services/krarc.protocol
-%{_datadir}/services/iso.protocol
 %{_datadir}/apps/konqueror/servicemenus/isoservice.desktop
 %{_datadir}/config/kio_isorc
-%{_desktopdir}/*.desktop
-%{_iconsdir}/hicolor/*/apps/*.png
+%{_datadir}/services/iso.protocol
+%{_datadir}/services/krarc.protocol
+%{_desktopdir}/krusader*.desktop
+%{_iconsdir}/crystalsvg/*/apps/*.png
 %{_mandir}/man1/krusader.1*
