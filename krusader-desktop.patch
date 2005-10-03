@@ -1,55 +1,18 @@
---- krusader-1.60.0-beta1/krusader/krusader.desktop	2005-01-13 09:56:12.000000000 +0100
-+++ krusader-1.60.0-beta1/krusader/krusader.desktop	2005-03-04 00:08:09.556749176 +0100
-@@ -4,14 +4,14 @@
- Exec=krusader -caption "%c" %i %m  
- Icon=krusader.png
- MiniIcon=krusader.png
--Terminal=0
-+Terminal=false
- Type=Application
- DocPath=krusader/index.html
--Categories=Qt;KDE;Utility;
--#Categories=Qt;KDE;System;
-+Categories=Qt;KDE;Utility;FileManager;
- Comment=Twin-Panel File Manager
- Comment[hu]=Kétpaneles fájlkezelő
- Comment[de]=Zwei-Fenster Dateimanager
-+Comment[pl]=Dwupanelowy zarządca plików
- GenericName=File Manager
- GenericName[af]=Lêer Bestuurder
- GenericName[ar]=مدير الملفات
-@@ -85,3 +85,4 @@
- GenericName[zh_CN]=文件管理器
- GenericName[zh_TW]=檔案管理程式
- GenericName[zu]=imenenja yamafayela
-+# vi: encoding=utf-8
 --- krusader-1.60.0-beta1/krusader/krusader_root-mode.desktop	2005-01-13 00:10:48.000000000 +0100
 +++ krusader-1.60.0-beta1/krusader/krusader_root-mode.desktop	2005-03-04 00:57:38.061467864 +0100
-@@ -2,18 +2,19 @@
- Encoding=UTF-8
+@@ -3,6 +3,7 @@
  Name=Krusader - root-mode
  Name[de]=Krusader - root-Modus
+ Name[cs]=Krusader s právy roota
 +Name[pl]=Krusader - tryb administratora
  Exec=krusader -caption "%c" %i %m  
  Icon=krusader_red.png
- MiniIcon=krusader_red.png
--Terminal=0
-+Terminal=false
- Type=Application
- DocPath=krusader/index.html
--Categories=Qt;KDE;Utility;
--#Categories=Qt;KDE;System;
-+Categories=Qt;KDE;System;X-Administration;
- X-KDE-SubstituteUID=true
- X-KDE-Username=root
+ Terminal=false
+@@ -15,6 +16,7 @@
  Comment=Twin-Panel File Manager with root-privileges
  Comment[de]=Zwei-Fenster Dateimanager mit root-Privilegien
+ Comment[cs]=Dvojpanelový správce souborů s právy Roota
 +Comment[pl]=Dwupanelowy zarządca plików - tryb administratora
  GenericName=File Manager
  GenericName[af]=Lêer Bestuurder
  GenericName[ar]=مدير الملفات
-@@ -87,3 +88,4 @@
- GenericName[zh_CN]=文件管理器
- GenericName[zh_TW]=檔案管理程式
- GenericName[zu]=imenenja yamafayela
-+# vi: encoding=utf-8
