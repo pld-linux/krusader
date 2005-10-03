@@ -1,0 +1,54 @@
+diff -U 3 -H -d -r -N -- krusader-1.70.0-beta1.orig/krusader/Locate/locate.cpp krusader-1.70.0-beta1/krusader/Locate/locate.cpp
+--- krusader-1.70.0-beta1.orig/krusader/Locate/locate.cpp	2005-05-26 01:00:42.000000000 +0200
++++ krusader-1.70.0-beta1/krusader/Locate/locate.cpp	2005-10-03 07:15:20.000000000 +0200
+@@ -386,14 +386,18 @@
+ void LocateDlg::operate( QListViewItem *item, int task )
+ {
+   KURL name = vfs::fromPathOrURL( item->text( 0 ) );
+-  
++  KrViewer::Mode mode = KrViewer::Generic;
++  krConfig->setGroup( "General" );
++  bool new_window = krConfig->readBoolEntry( "View In Separate Window", _ViewInSeparateWindow );
++
+   switch ( task )
+   {
+   case VIEW_ID:
+-    KrViewer::view( name ); // view the file
++    KrViewer::view( name, mode, new_window ); // view the file
+     break;
+   case EDIT_ID:
+-    KrViewer::edit( name ); // view the file
++    mode = KrViewer::Text;
++    KrViewer::edit( name, mode, new_window ); // edit the file
+     break;
+   case FIND_ID:
+     {
+diff -U 3 -H -d -r -N -- krusader-1.70.0-beta1.orig/krusader/Panel/panelfunc.cpp krusader-1.70.0-beta1/krusader/Panel/panelfunc.cpp
+--- krusader-1.70.0-beta1.orig/krusader/Panel/panelfunc.cpp	2005-09-30 23:44:30.000000000 +0200
++++ krusader-1.70.0-beta1/krusader/Panel/panelfunc.cpp	2005-10-03 07:39:20.000000000 +0200
+@@ -324,8 +324,11 @@
+ 		KMessageBox::sorry( 0, i18n( "No permissions to view this file." ) );
+ 		return ;
+ 	}
++	KrViewer::Mode mode = KrViewer::Generic;
++	krConfig->setGroup( "General" );
++	bool new_window = krConfig->readBoolEntry( "View In Separate Window", _ViewInSeparateWindow );
+ 	// call KViewer.
+-	KrViewer::view( files() ->vfs_getFile( fileName ) );
++	KrViewer::view( files() ->vfs_getFile( fileName ), mode, new_window );
+ 	// nothing more to it!
+ }
+ 
+@@ -364,8 +367,11 @@
+ 		KMessageBox::sorry( 0, i18n( "No permissions to edit this file." ) );
+ 		return ;
+ 	}
++	KrViewer::Mode mode = KrViewer::Text;
++	krConfig->setGroup( "General" );
++	bool new_window = krConfig->readBoolEntry( "View In Separate Window", _ViewInSeparateWindow );
+ 
+-	KrViewer::edit( files() ->vfs_getFile( name ) );
++	KrViewer::edit( files() ->vfs_getFile( name ), mode, new_window );
+ }
+ 
+ void ListPanelFunc::moveFiles() {
