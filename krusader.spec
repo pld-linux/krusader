@@ -86,15 +86,12 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog FAQ README TODO doc/actions_tutorial.txt
 %attr(755,root,root) %{_bindir}/krusader
-%attr(755,root,root) %{_libdir}/kde3/kio_krarc.so
-%attr(755,root,root) %{_libdir}/kde3/kio_iso.so
-%{_libdir}/kde3/kio_krarc.la
-%{_libdir}/kde3/kio_iso.la
+%attr(755,root,root) %{_libdir}/kde3/*.so
+%{_libdir}/kde3/*.la
 %{_datadir}/apps/krusader
 %{_datadir}/apps/konqueror/servicemenus/isoservice.desktop
 %{_datadir}/config/kio_isorc
-%{_datadir}/services/iso.protocol
-%{_datadir}/services/krarc.protocol
+%{_datadir}/services/*.protocol
 %{_desktopdir}/krusader*.desktop
 %{_iconsdir}/crystalsvg/*/apps/*.png
 %{_mandir}/man1/krusader.1*
