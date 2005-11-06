@@ -3,7 +3,7 @@
 %bcond_without	libkonq		# importing the right click menu of konqueror
 %bcond_without	libkjsembed	# with libkjsembed
 #
-%define		_beta	beta1
+%define		_beta	beta2
 Summary:	Krusader is a filemanager for KDE 3
 Summary(pl):	Krusader jest zarz±dc± plików dla KDE 3
 Name:		krusader
@@ -12,7 +12,7 @@ Release:	%{_beta}.1
 License:	GPL
 Group:		X11/Applications
 Source0:	http://dl.sourceforge.net/krusader/%{name}-%{version}-%{_beta}.tar.gz
-# Source0-md5:	88f2f0593ca4f6736f2108d76b8cdcf0
+# Source0-md5:	4b46a5f2e0529c956e6e85cf4cf11299
 Patch0:		%{name}-desktop.patch
 Patch1:		%{name}-mount.patch
 Patch2:		%{name}-krviewer.patch
@@ -56,7 +56,7 @@ cp -f /usr/share/automake/config.sub admin
 export QTDIR=%{_prefix}
 export KDEDIR=%{_prefix}
 %configure \
-	--disable-rpath \
+	--with-kiotar \
 	%{!?with_libkonq:--without-konqueror} \
 	%{!?with_libkjsembed:--without-javascript} \
 	--%{?debug:en}%{!?debug:dis}able-debug%{?debug:=full} \
