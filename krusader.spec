@@ -26,6 +26,7 @@ BuildRequires:	kdelibs-devel >= 3.3
 BuildRequires:	qt-devel >= 3.3
 BuildRequires:	rpmbuild(macros) >= 1.129
 BuildRequires:	sed >= 4.0
+BuildRequires:	acl-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
