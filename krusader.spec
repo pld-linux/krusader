@@ -22,11 +22,10 @@ BuildRequires:	automake
 BuildRequires:	gettext-devel
 %{?with_libkonq:BuildRequires:	kdebase-devel}
 %{?with_libkjsembed:BuildRequires:	kdebindings-kjsembed-devel}
-BuildRequires:	kdelibs-devel >= 3.3
+BuildRequires:	kdelibs-devel >= 3.5.0-4
 BuildRequires:	qt-devel >= 3.3
 BuildRequires:	rpmbuild(macros) >= 1.129
 BuildRequires:	sed >= 4.0
-BuildRequires:	acl-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
