@@ -28,6 +28,8 @@ BuildRequires:	rpmbuild(macros) >= 1.129
 BuildRequires:	sed >= 4.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
+%undefine	with_ccache
+
 %description
 Krusader is a filemanager for KDE 3, patterned after old-school
 managers like midnight commander and norton commander. It features
@@ -42,8 +44,8 @@ zarz±dcach "starej szko³y", jak Midnight Commander czy Norton
 Commander. Zaspokaja w zasadzie wszystkie podstawowe potrzeby w
 zarz±dzaniu plików, dodatkowo obs³uguje archiwa, montowanie systemów
 plików, FTP i o wiele, wiele wiêcej. Jest (prawie) ca³kowicie
-ustawialny, bardzo przyjazny dla u¿ytkownika, szybki i cholernie
-³adny :-). Powiniene¶ go wypróbowaæ.
+ustawialny, bardzo przyjazny dla u¿ytkownika, szybki i cholernie ³adny
+:-). Powiniene¶ go wypróbowaæ.
 
 %prep
 %setup -q
@@ -78,6 +80,9 @@ mv -f $RPM_BUILD_ROOT%{_datadir}/applnk/krusader_root-mode.desktop \
 	$RPM_BUILD_ROOT%{_desktopdir}/krusader_root-mode.desktop
 
 %find_lang %{name} --with-kde
+
+# locolor icons are deprecated (see kde .spec-s)
+rm -f $RPM_BUILD_ROOT%{_iconsdir}/locolor/*/apps/*.png
 
 %clean
 rm -rf $RPM_BUILD_ROOT
