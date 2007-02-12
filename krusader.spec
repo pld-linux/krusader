@@ -4,7 +4,7 @@
 %bcond_without	libkjsembed	# with libkjsembed
 #
 Summary:	Krusader is a filemanager for KDE 3
-Summary(pl):	Krusader jest zarz±dc± plików dla KDE 3
+Summary(pl.UTF-8):   Krusader jest zarzÄ…dcÄ… plikÃ³w dla KDE 3
 Name:		krusader
 Version:	1.60.0
 Release:	1
@@ -34,14 +34,14 @@ handling, mounted filesystems support, FTP and much much more. It is
 (almost) completely customizable, very user friendly, fast and damn
 good looking :-). You should give it a try.
 
-%description -l pl
-Krusader jest zarz±dc± plików dla KDE 3, wzorowanym na takich
-zarz±dcach "starej szko³y", jak Midnight Commander czy Norton
+%description -l pl.UTF-8
+Krusader jest zarzÄ…dcÄ… plikÃ³w dla KDE 3, wzorowanym na takich
+zarzÄ…dcach "starej szkoÅ‚y", jak Midnight Commander czy Norton
 Commander. Zaspokaja w zasadzie wszystkie podstawowe potrzeby w
-zarz±dzaniu plików, dodatkowo obs³uguje archiwa, montowanie systemów
-plików, FTP i o wiele, wiele wiêcej. Jest (prawie) ca³kowicie
-ustawialny, bardzo przyjazny dla u¿ytkownika, szybki i cholernie
-³adny :-). Powiniene¶ go wypróbowaæ.
+zarzÄ…dzaniu plikÃ³w, dodatkowo obsÅ‚uguje archiwa, montowanie systemÃ³w
+plikÃ³w, FTP i o wiele, wiele wiÄ™cej. Jest (prawie) caÅ‚kowicie
+ustawialny, bardzo przyjazny dla uÅ¼ytkownika, szybki i cholernie
+Å‚adny :-). PowinieneÅ› go wyprÃ³bowaÄ‡.
 
 %prep
 %setup -q
