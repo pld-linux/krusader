@@ -21,8 +21,6 @@ URL:		http://krusader.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gettext-devel
-BuildRequires:  boost-filesystem-devel
-BuildRequires:  boost-regex-devel
 %{?with_libkonq:BuildRequires:	kdebase-devel}
 %{?with_libkjsembed:BuildRequires:	kdebindings-kjsembed-devel}
 BuildRequires:	kdelibs-devel >= 3.5.0-4
@@ -82,11 +80,13 @@ mv -f $RPM_BUILD_ROOT%{_datadir}/applnk/krusader.desktop \
 	$RPM_BUILD_ROOT%{_desktopdir}/krusader.desktop
 mv -f $RPM_BUILD_ROOT%{_datadir}/applnk/krusader_root-mode.desktop \
 	$RPM_BUILD_ROOT%{_desktopdir}/krusader_root-mode.desktop
-
 %find_lang %{name} --with-kde
 
 # locolor icons are deprecated (see kde .spec-s)
 rm -f $RPM_BUILD_ROOT%{_iconsdir}/locolor/*/apps/*.png
+
+# confilicts with krusader
+rm $RPM_BUILD_ROOT%{_libdir}/kde3/kio_tar.so
 
 %clean
 rm -rf $RPM_BUILD_ROOT
