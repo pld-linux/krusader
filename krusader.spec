@@ -16,6 +16,7 @@ Source0:	http://dl.sourceforge.net/krusader/%{name}-%{version}.tar.gz
 Patch0:		%{name}-desktop.patch
 Patch1:		%{name}-mount.patch
 Patch2:		%{name}-krviewer.patch
+Patch3:		%{name}-vfs.h.patch
 URL:		http://krusader.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -52,6 +53,7 @@ ustawialny, bardzo przyjazny dla użytkownika, szybki i cholernie ładny
 %patch0 -p1
 %patch1 -p0
 %patch2 -p1
+%patch3 -p0
 
 %build
 cp -f /usr/share/automake/config.sub admin
