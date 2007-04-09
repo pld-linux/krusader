@@ -3,16 +3,16 @@
 %bcond_without	libkonq		# importing the right click menu of konqueror
 %bcond_without	libkjsembed	# with libkjsembed
 #
-#%%define		_beta	beta2
+%define		_beta	beta2
 Summary:	Krusader is a filemanager for KDE 3
 Summary(pl.UTF-8):	Krusader jest zarządcą plików dla KDE 3
 Name:		krusader
-Version:	1.70.1
-Release:	2
+Version:	1.80.0
+Release:	0.%{_beta}.1
 License:	GPL
 Group:		X11/Applications
-Source0:	http://dl.sourceforge.net/krusader/%{name}-%{version}.tar.gz
-# Source0-md5:	d8b33c94385fe055d55f592f0dc15c36
+Source0:	http://dl.sourceforge.net/krusader/%{name}-%{version}-%{_beta}.tar.gz
+# Source0-md5:	2766071dea2fbf5c3abd6de8946c0a08
 Patch0:		%{name}-desktop.patch
 Patch1:		%{name}-mount.patch
 Patch2:		%{name}-krviewer.patch
@@ -24,7 +24,7 @@ BuildRequires:	gettext-devel
 %{?with_libkonq:BuildRequires:	kdebase-devel}
 %{?with_libkjsembed:BuildRequires:	kdebindings-kjsembed-devel}
 BuildRequires:	kdelibs-devel >= 3.5.0-4
-BuildRequires:	qt-devel >= 3.3
+BuildRequires:	qt-devel >= 6:3.3
 BuildRequires:	rpmbuild(macros) >= 1.129
 BuildRequires:	sed >= 4.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -49,7 +49,7 @@ ustawialny, bardzo przyjazny dla użytkownika, szybki i cholernie ładny
 :-). Powinieneś go wypróbować.
 
 %prep
-%setup -q
+%setup -q -n %{name}-%{version}-%{_beta}
 %patch0 -p1
 %patch1 -p0
 %patch2 -p1
