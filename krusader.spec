@@ -1,22 +1,25 @@
 #
+# TODO:
+# - revise patch3 and patch4 (adapt it or just remove when they're no longer needed) and rel up to 1
+#
 # Conditional build:
 %bcond_without	libkonq		# importing the right click menu of konqueror
 %bcond_without	libkjsembed	# with libkjsembed
 #
-%define		_beta	beta2
 Summary:	Krusader is a filemanager for KDE 3
 Summary(pl.UTF-8):	Krusader jest zarządcą plików dla KDE 3
 Name:		krusader
 Version:	1.80.0
-Release:	0.%{_beta}.1
+Release:	0.1
 License:	GPL
 Group:		X11/Applications
-Source0:	http://dl.sourceforge.net/krusader/%{name}-%{version}-%{_beta}.tar.gz
-# Source0-md5:	2766071dea2fbf5c3abd6de8946c0a08
-Patch0:		%{name}-desktop.patch
-Patch1:		%{name}-mount.patch
-Patch2:		%{name}-krviewer.patch
-Patch3:		%{name}-vfs.h.patch
+Source0:	http://dl.sourceforge.net/krusader/%{name}-%{version}.tar.gz
+# Source0-md5:	32bfaf4de7ca62e0f612357f4aa065a9
+Patch0:		kde-ac260-lt.patch
+Patch1:		%{name}-desktop.patch
+Patch2:		%{name}-mount.patch
+Patch3:		%{name}-krviewer.patch
+Patch4:		%{name}-vfs.h.patch
 URL:		http://krusader.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -49,16 +52,18 @@ ustawialny, bardzo przyjazny dla użytkownika, szybki i cholernie ładny
 :-). Powinieneś go wypróbować.
 
 %prep
-%setup -q -n %{name}-%{version}-%{_beta}
+%setup -q 
 %patch0 -p1
-%patch1 -p0
-%patch2 -p1
-%patch3 -p0
+%patch1 -p1
+%patch2 -p0
+#%patch3 -p1
+#%patch4 -p0
 
 %build
 cp -f /usr/share/automake/config.sub admin
 export QTDIR=%{_prefix}
 export KDEDIR=%{_prefix}
+%{__make} -f admin/Makefile.common cvs
 %configure \
 	--with-kiotar \
 	%{!?with_libkonq:--without-konqueror} \
@@ -76,9 +81,9 @@ install -d $RPM_BUILD_ROOT%{_desktopdir}
 	DESTDIR=$RPM_BUILD_ROOT \
 	kde_htmldir=%{_kdedocdir}
 
-mv -f $RPM_BUILD_ROOT%{_datadir}/applnk/krusader.desktop \
+mv -f $RPM_BUILD_ROOT%{_datadir}/applications/kde/krusader.desktop \
 	$RPM_BUILD_ROOT%{_desktopdir}/krusader.desktop
-mv -f $RPM_BUILD_ROOT%{_datadir}/applnk/krusader_root-mode.desktop \
+mv -f $RPM_BUILD_ROOT%{_datadir}/applications/kde/krusader_root-mode.desktop \
 	$RPM_BUILD_ROOT%{_desktopdir}/krusader_root-mode.desktop
 %find_lang %{name} --with-kde
 
