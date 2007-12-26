@@ -19,7 +19,6 @@ Patch0:		kde-ac260-lt.patch
 Patch1:		%{name}-desktop.patch
 Patch2:		%{name}-mount.patch
 Patch3:		%{name}-krviewer.patch
-Patch4:		%{name}-vfs.h.patch
 URL:		http://krusader.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -57,7 +56,6 @@ ustawialny, bardzo przyjazny dla użytkownika, szybki i cholernie ładny
 %patch1 -p1
 %patch2 -p0
 #%patch3 -p1
-#%patch4 -p0
 
 %build
 cp -f /usr/share/automake/config.sub admin
