@@ -6,12 +6,12 @@
 Summary:	Krusader is a filemanager for KDE 3
 Summary(pl.UTF-8):	Krusader jest zarządcą plików dla KDE 3
 Name:		krusader
-Version:	1.80.0
+Version:	1.90.0
 Release:	1
 License:	GPL
 Group:		X11/Applications
 Source0:	http://dl.sourceforge.net/krusader/%{name}-%{version}.tar.gz
-# Source0-md5:	32bfaf4de7ca62e0f612357f4aa065a9
+# Source0-md5:	0bcf8f4d03484dae0390ffafa953ac40
 Patch0:		kde-ac260-lt.patch
 Patch1:		%{name}-desktop.patch
 Patch2:		%{name}-mount.patch
