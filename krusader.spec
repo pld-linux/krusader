@@ -3,19 +3,18 @@
 %bcond_without	libkonq		# importing the right click menu of konqueror
 %bcond_without	libkjsembed	# with libkjsembed
 #
-#%%define		_beta	beta2
 Summary:	Krusader is a filemanager for KDE 3
-Summary(pl):	Krusader jest zarz±dc± plików dla KDE 3
+Summary(pl.UTF-8):	Krusader jest zarzÄ…dcÄ… plikÃ³w dla KDE 3
 Name:		krusader
-Version:	1.70.1
+Version:	1.90.0
 Release:	1
 License:	GPL
 Group:		X11/Applications
 Source0:	http://dl.sourceforge.net/krusader/%{name}-%{version}.tar.gz
-# Source0-md5:	d8b33c94385fe055d55f592f0dc15c36
-Patch0:		%{name}-desktop.patch
-Patch1:		%{name}-mount.patch
-Patch2:		%{name}-krviewer.patch
+# Source0-md5:	0bcf8f4d03484dae0390ffafa953ac40
+Patch0:		kde-ac260-lt.patch
+Patch1:		%{name}-desktop.patch
+Patch2:		%{name}-mount.patch
 URL:		http://krusader.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -23,7 +22,9 @@ BuildRequires:	gettext-devel
 %{?with_libkonq:BuildRequires:	kdebase-devel}
 %{?with_libkjsembed:BuildRequires:	kdebindings-kjsembed-devel}
 BuildRequires:	kdelibs-devel >= 3.5.0-4
-BuildRequires:	qt-devel >= 3.3
+# FIXME: version
+BuildRequires:	kdelibs-shared
+BuildRequires:	qt-devel >= 6:3.3
 BuildRequires:	rpmbuild(macros) >= 1.129
 BuildRequires:	sed >= 4.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -38,25 +39,26 @@ handling, mounted filesystems support, FTP and much much more. It is
 (almost) completely customizable, very user friendly, fast and damn
 good looking :-). You should give it a try.
 
-%description -l pl
-Krusader jest zarz±dc± plików dla KDE 3, wzorowanym na takich
-zarz±dcach "starej szko³y", jak Midnight Commander czy Norton
+%description -l pl.UTF-8
+Krusader jest zarzÄ…dcÄ… plikÃ³w dla KDE 3, wzorowanym na takich
+zarzÄ…dcach "starej szkoÅ‚y", jak Midnight Commander czy Norton
 Commander. Zaspokaja w zasadzie wszystkie podstawowe potrzeby w
-zarz±dzaniu plików, dodatkowo obs³uguje archiwa, montowanie systemów
-plików, FTP i o wiele, wiele wiêcej. Jest (prawie) ca³kowicie
-ustawialny, bardzo przyjazny dla u¿ytkownika, szybki i cholernie ³adny
-:-). Powiniene¶ go wypróbowaæ.
+zarzÄ…dzaniu plikÃ³w, dodatkowo obsÅ‚uguje archiwa, montowanie systemÃ³w
+plikÃ³w, FTP i o wiele, wiele wiÄ™cej. Jest (prawie) caÅ‚kowicie
+ustawialny, bardzo przyjazny dla uÅ¼ytkownika, szybki i cholernie Å‚adny
+:-). PowinieneÅ› go wyprÃ³bowaÄ‡.
 
 %prep
-%setup -q
+%setup -q 
 %patch0 -p1
-%patch1 -p0
-%patch2 -p1
+%patch1 -p1
+%patch2 -p0
 
 %build
 cp -f /usr/share/automake/config.sub admin
 export QTDIR=%{_prefix}
 export KDEDIR=%{_prefix}
+%{__make} -f admin/Makefile.common cvs
 %configure \
 	--with-kiotar \
 	%{!?with_libkonq:--without-konqueror} \
@@ -74,15 +76,17 @@ install -d $RPM_BUILD_ROOT%{_desktopdir}
 	DESTDIR=$RPM_BUILD_ROOT \
 	kde_htmldir=%{_kdedocdir}
 
-mv -f $RPM_BUILD_ROOT%{_datadir}/applnk/krusader.desktop \
+mv -f $RPM_BUILD_ROOT%{_datadir}/applications/kde/krusader.desktop \
 	$RPM_BUILD_ROOT%{_desktopdir}/krusader.desktop
-mv -f $RPM_BUILD_ROOT%{_datadir}/applnk/krusader_root-mode.desktop \
+mv -f $RPM_BUILD_ROOT%{_datadir}/applications/kde/krusader_root-mode.desktop \
 	$RPM_BUILD_ROOT%{_desktopdir}/krusader_root-mode.desktop
-
 %find_lang %{name} --with-kde
 
 # locolor icons are deprecated (see kde .spec-s)
 rm -f $RPM_BUILD_ROOT%{_iconsdir}/locolor/*/apps/*.png
+
+# confilicts with krusader
+rm $RPM_BUILD_ROOT%{_libdir}/kde3/kio_tar.so
 
 %clean
 rm -rf $RPM_BUILD_ROOT
