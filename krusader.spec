@@ -29,36 +29,37 @@ BuildRequires:	phonon-devel
 BuildRequires:	rpmbuild(macros) >= 1.129
 BuildRequires:	sed >= 4.0
 BuildRequires:	zlib-devel
-Suggests:	tar
-Suggests:	gzip
 Suggests:	bzip2
+Suggests:	dpkg
+Suggests:	gzip
 Suggests:	lha
-Suggests:	zip
-Suggests:	unzip
-Suggests:	unarj
-Suggests:	unace
-Suggests:	unrar
 Suggests:	p7zip
+Suggests:	tar
+Suggests:	unace
+Suggests:	unarj
+Suggests:	unrar
+Suggests:	unzip
+Suggests:	zip
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %undefine	with_ccache
 
 %description
-Krusader is a filemanager for KDE, patterned after old-school
-managers like midnight commander and norton commander. It features
-basically all your file-management needs, plus extensive archive
-handling, mounted filesystems support, FTP and much much more. It is
-(almost) completely customizable, very user friendly, fast and damn
-good looking :-). You should give it a try.
+Krusader is a filemanager for KDE, patterned after old-school managers
+like midnight commander and norton commander. It features basically
+all your file-management needs, plus extensive archive handling,
+mounted filesystems support, FTP and much much more. It is (almost)
+completely customizable, very user friendly, fast and damn good
+looking :-). You should give it a try.
 
 %description -l pl.UTF-8
-Krusader jest zarządcą plików dla KDE, wzorowanym na takich
-zarządcach "starej szkoły", jak Midnight Commander czy Norton
-Commander. Zaspokaja w zasadzie wszystkie podstawowe potrzeby w
-zarządzaniu plików, dodatkowo obsługuje archiwa, montowanie systemów
-plików, FTP i o wiele, wiele więcej. Jest (prawie) całkowicie
-ustawialny, bardzo przyjazny dla użytkownika, szybki i cholernie ładny
-:-). Powinieneś go wypróbować.
+Krusader jest zarządcą plików dla KDE, wzorowanym na takich zarządcach
+"starej szkoły", jak Midnight Commander czy Norton Commander.
+Zaspokaja w zasadzie wszystkie podstawowe potrzeby w zarządzaniu
+plików, dodatkowo obsługuje archiwa, montowanie systemów plików, FTP i
+o wiele, wiele więcej. Jest (prawie) całkowicie ustawialny, bardzo
+przyjazny dla użytkownika, szybki i cholernie ładny :-). Powinieneś go
+wypróbować.
 
 %prep
 %setup -q -n %{name}-%{version}-%{_state}
