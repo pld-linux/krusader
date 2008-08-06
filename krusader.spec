@@ -32,6 +32,7 @@ BuildRequires:	zlib-devel
 Suggests:	bzip2
 Suggests:	dpkg
 Suggests:	gzip
+Suggests:	krename >= 3.9.1
 Suggests:	lha
 Suggests:	p7zip
 Suggests:	tar
