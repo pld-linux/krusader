@@ -29,6 +29,16 @@ BuildRequires:	phonon-devel
 BuildRequires:	rpmbuild(macros) >= 1.129
 BuildRequires:	sed >= 4.0
 BuildRequires:	zlib-devel
+Suggests:	tar
+Suggests:	gzip
+Suggests:	bzip2
+Suggests:	lha
+Suggests:	zip
+Suggests:	unzip
+Suggests:	unarj
+Suggests:	unace
+Suggests:	unrar
+Suggests:	p7zip
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %undefine	with_ccache
