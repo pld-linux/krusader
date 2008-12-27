@@ -1,17 +1,17 @@
---- krusader-1.60.0-beta1/krusader/krusader_root-mode.desktop	2005-01-13 00:10:48.000000000 +0100
-+++ krusader-1.60.0-beta1/krusader/krusader_root-mode.desktop	2005-03-04 00:57:38.061467864 +0100
-@@ -3,6 +3,7 @@
- Name=Krusader - root-mode
+--- krusader-2.0.0-beta2/krusader/krusader_root-mode.desktop.orig	2008-12-27 23:32:20.000000000 +0100
++++ krusader-2.0.0-beta2/krusader/krusader_root-mode.desktop	2008-12-27 23:35:17.000000000 +0100
+@@ -4,6 +4,7 @@
  Name[de]=Krusader - root-Modus
  Name[cs]=Krusader s právy roota
-+Name[pl]=Krusader - tryb administratora
+ Name[lt]=Krusader – root režimas
++Name[pl]=Krusader – tryb administratora
  Exec=krusader -caption "%c" %i %m  
- Icon=krusader_red.png
+ Icon=krusader_root.png
  Terminal=false
-@@ -15,6 +16,7 @@
- Comment=Twin-Panel File Manager with root-privileges
- Comment[de]=Zwei-Fenster Dateimanager mit root-Privilegien
+@@ -17,6 +18,7 @@
+ Comment[de]=Zwei-Fenster Dateimanager (Systemverwaltungsmodus)
  Comment[cs]=Dvojpanelový správce souborů s právy Roota
+ Comment[lt]=Dviejų skydelių failų tvarkyklė su root teisėmis
 +Comment[pl]=Dwupanelowy zarządca plików - tryb administratora
  GenericName=File Manager
  GenericName[af]=Lêer Bestuurder
