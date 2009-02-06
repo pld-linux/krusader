@@ -18,8 +18,12 @@ Source0:	http://dl.sourceforge.net/krusader/%{name}-%{version}-%{_state}.tar.gz
 Patch0:		%{name}-desktop.patch
 #Patch2: %{name}-mount.patch
 URL:		http://krusader.sourceforge.net/
+BuildRequires:	Qt3Support-devel
+BuildRequires:	QtDBus-devel
+BuildRequires:	QtSvg-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
+BuildRequires:	automoc4
 BuildRequires:	cmake
 BuildRequires:	gettext-devel
 %{?with_libkonq:BuildRequires:	kde4-kdebase-devel}
