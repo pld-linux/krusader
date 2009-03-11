@@ -34,10 +34,15 @@ BuildRequires:	rpmbuild(macros) >= 1.129
 BuildRequires:	sed >= 4.0
 BuildRequires:	zlib-devel
 Suggests:	bzip2
+Suggests:	cfv
+Suggests:	coreutils
 Suggests:	dpkg
 Suggests:	gzip
+Suggests:	kdiff3
+Suggests:	kde4-kdesdk-kompare
 Suggests:	krename >= 3.9.1
 Suggests:	lha
+Suggests:	md5deep
 Suggests:	p7zip
 Suggests:	tar
 Suggests:	unace
