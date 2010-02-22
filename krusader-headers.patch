@@ -1,0 +1,10 @@
+--- krusader-2.0.0/krusader/VFS/kiojobwrapper.cpp~	2009-04-11 21:40:15.000000000 +0200
++++ krusader-2.0.0/krusader/VFS/kiojobwrapper.cpp	2010-02-22 12:34:55.554124493 +0100
+@@ -41,6 +41,7 @@
+ #include <klocale.h>
+ #include "virtualcopyjob.h"
+ #include <QTextDocument>
++#include <stdio.h>
+ 
+ class JobStartEvent : public QEvent {
+ public:
