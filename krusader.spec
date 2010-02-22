@@ -19,8 +19,6 @@ URL:		http://krusader.sourceforge.net/
 BuildRequires:	Qt3Support-devel
 BuildRequires:	QtDBus-devel
 BuildRequires:	QtSvg-devel
-BuildRequires:	autoconf
-BuildRequires:	automake
 BuildRequires:	automoc4
 BuildRequires:	cmake
 BuildRequires:	gettext-devel
@@ -28,6 +26,8 @@ BuildRequires:	gettext-devel
 %{?with_libkjsembed:BuildRequires:	kde4-kdebindings-kjsembed-devel}
 BuildRequires:	kde4-kdelibs-devel
 BuildRequires:	phonon-devel
+BuildRequires:	qt4-build
+BuildRequires:	qt4-qmake
 BuildRequires:	rpmbuild(macros) >= 1.129
 BuildRequires:	sed >= 4.0
 BuildRequires:	zlib-devel
