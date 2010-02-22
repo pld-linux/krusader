@@ -4,17 +4,17 @@
 %bcond_with	libkjsembed	# with libkjsembed
 #
 
+%define		_beta	beta1
 Summary:	Krusader is a filemanager for KDE
 Summary(pl.UTF-8):	Krusader jest zarządcą plików dla KDE
 Name:		krusader
-Version:	2.0.0
-Release:	2
-License:	GPL
+Version:	2.1.0
+Release:	0.%{_beta}.1
+License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://downloads.sourceforge.net/krusader/%{name}-%{version}.tar.gz
-# Source0-md5:	f80f500a136d549739ad5d4bcab7fa5f
+Source0:	http://downloads.sourceforge.net/krusader/%{name}-%{version}-%{_beta}.tar.bz2
+# Source0-md5:	fa4bf47cc8da451d115afdb5c1feb8af
 Patch0:		%{name}-desktop.patch
-Patch1:		%{name}-headers.patch
 URL:		http://krusader.sourceforge.net/
 BuildRequires:	Qt3Support-devel
 BuildRequires:	QtDBus-devel
@@ -72,9 +72,8 @@ przyjazny dla użytkownika, szybki i cholernie ładny :-). Powinieneś go
 wypróbować.
 
 %prep
-%setup -q
+%setup -q -n %{name}-%{version}-%{_beta}
 %patch0 -p1
-%patch1 -p1
 
 %build
 install -d build
@@ -107,7 +106,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog FAQ README doc/actions_tutorial.txt
+%doc AUTHORS ChangeLog FAQ README
 %attr(755,root,root) %{_bindir}/krusader
 %attr(755,root,root) %{_libdir}/kde4/*.so
 %{_datadir}/apps/krusader
