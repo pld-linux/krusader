@@ -15,7 +15,7 @@ Source0:	http://downloads.sourceforge.net/krusader/%{name}-%{version}.tar.gz
 # Source0-md5:	f80f500a136d549739ad5d4bcab7fa5f
 Patch0:		%{name}-desktop.patch
 Patch1:		%{name}-headers.patch
-URL:		http://krusader.sourceforge.net/
+URL:		http://www.krusader.org
 BuildRequires:	Qt3Support-devel
 BuildRequires:	QtDBus-devel
 BuildRequires:	QtSvg-devel
