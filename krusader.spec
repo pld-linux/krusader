@@ -21,6 +21,8 @@ BuildRequires:	QtDBus-devel
 BuildRequires:	QtSvg-devel
 BuildRequires:	automoc4
 BuildRequires:	cmake
+BuildRequires:	docbook-dtd42-xml
+BuildRequires:	docbook-style-xsl
 BuildRequires:	gettext-devel
 %{?with_libkonq:BuildRequires:	kde4-kdebase-devel}
 %{?with_libkjsembed:BuildRequires:	kde4-kdebindings-kjsembed-devel}
@@ -49,6 +51,7 @@ Suggests:	unace
 Suggests:	unarj
 Suggests:	unrar
 Suggests:	unzip
+Suggests:	xz
 Suggests:	zip
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
