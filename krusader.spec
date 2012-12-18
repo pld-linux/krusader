@@ -14,7 +14,7 @@ License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://downloads.sourceforge.net/krusader/%{name}-%{version}-%{_beta}.tar.bz2
 # Source0-md5:	62a02db3f213bb76805ca6c958e9e263
-URL:		http://krusader.sourceforge.net/
+URL:		http://www.krusader.org
 BuildRequires:	Qt3Support-devel
 BuildRequires:	QtDBus-devel
 BuildRequires:	QtSvg-devel
