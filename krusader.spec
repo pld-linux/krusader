@@ -21,7 +21,7 @@ BuildRequires:	QtDBus-devel
 BuildRequires:	QtSvg-devel
 BuildRequires:	automoc4
 BuildRequires:	cmake
-BuildRequires:	gettext-devel
+BuildRequires:	gettext-tools
 %{?with_libkonq:BuildRequires:	kde4-kdebase-devel}
 %{?with_libkjsembed:BuildRequires:	kde4-kdebindings-kjsembed-devel}
 BuildRequires:	kde4-kdelibs-devel
