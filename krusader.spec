@@ -10,12 +10,12 @@
 Summary:	Krusader is a filemanager for KDE
 Summary(pl.UTF-8):	Krusader jest zarządcą plików dla KDE
 Name:		krusader
-Version:	2.6.0
+Version:	2.7.1
 Release:	1
 License:	GPL
 Group:		X11/Applications
 Source0:	http://download.kde.org/stable/%{name}/%{version}/%{name}-%{version}.tar.xz
-# Source0-md5:	a4559041d1b6dfe0830fbe3a3029e524
+# Source0-md5:	3007982c9e0ba7b2b66ecc51bdafa98a
 URL:		http://www.krusader.org/
 BuildRequires:	Qt3Support-devel
 BuildRequires:	Qt5Concurrent-devel
@@ -131,7 +131,8 @@ install -d $RPM_BUILD_ROOT%{_desktopdir}
 # locolor icons are deprecated (see kde .spec-s)
 rm -f $RPM_BUILD_ROOT%{_iconsdir}/locolor/*/apps/*.png
 
-%{__mv} $RPM_BUILD_ROOT%{_docdir}/HTML/pt_BR $RPM_BUILD_ROOT%{_docdir}/HTML/pt
+install -d $RPM_BUILD_ROOT%{_libdir}/qt5/plugins
+%{__mv} $RPM_BUILD_ROOT%{_libdir}/plugins/*.so $RPM_BUILD_ROOT%{_libdir}/qt5/plugins
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -142,7 +143,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/krusader
 %attr(755,root,root) %{_libdir}/qt5/plugins/*.so
 %{_sysconfdir}/xdg/kio_isorc
-%{_datadir}/appdata/org.kde.krusader.appdata.xml
+%{_datadir}/metainfo/org.kde.krusader.appdata.xml
 %{_datadir}/krusader
 %{_datadir}/kservices5/*.protocol
 %{_datadir}/kxmlgui5/krusader
@@ -151,7 +152,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/hicolor/*/*/*
 %{_mandir}/man1/krusader.1.gz
 %lang(de) %{_mandir}/de/man1/krusader.1.gz
+%lang(it) %{_mandir}/it/man1/krusader.1.gz
 %lang(nl) %{_mandir}/nl/man1/krusader.1.gz
-%lang(pt_BR) %{_mandir}/pt_BR/man1/krusader.1.gz
+%lang(pt) %{_mandir}/pt/man1/krusader.1.gz
 %lang(sv) %{_mandir}/sv/man1/krusader.1.gz
 %lang(uk) %{_mandir}/uk/man1/krusader.1.gz
