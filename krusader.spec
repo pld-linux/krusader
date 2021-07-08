@@ -10,26 +10,26 @@
 Summary:	Krusader is a filemanager for KDE
 Summary(pl.UTF-8):	Krusader jest zarządcą plików dla KDE
 Name:		krusader
-Version:	2.7.1
-Release:	4
+Version:	2.7.2
+Release:	1
 License:	GPL
 Group:		X11/Applications
 Source0:	http://download.kde.org/stable/%{name}/%{version}/%{name}-%{version}.tar.xz
-# Source0-md5:	3007982c9e0ba7b2b66ecc51bdafa98a
+# Source0-md5:	dcccc3a5e956ad0b1b63f236c4f41a7f
 URL:		http://www.krusader.org/
-BuildRequires:	Qt3Support-devel
+#BuildRequires:	Qt3Support-devel
 BuildRequires:	Qt5Concurrent-devel
 BuildRequires:	Qt5DBus-devel
 BuildRequires:	Qt5Network-devel
 BuildRequires:	Qt5Xml-devel
-BuildRequires:	QtDBus-devel
-BuildRequires:	QtSvg-devel
-BuildRequires:	automoc4
+#BuildRequires:	QtDBus-devel
+#BuildRequires:	QtSvg-devel
+#BuildRequires:	automoc4
 BuildRequires:	cmake
 BuildRequires:	gettext-tools
-%{?with_libkonq:BuildRequires:	kde4-kdebase-devel}
-%{?with_libkjsembed:BuildRequires:	kde4-kdebindings-kjsembed-devel}
-BuildRequires:	kde4-kdelibs-devel
+#%{?with_libkonq:BuildRequires:	kde4-kdebase-devel}
+#%{?with_libkjsembed:BuildRequires:	kde4-kdebindings-kjsembed-devel}
+#BuildRequires:	kde4-kdelibs-devel
 BuildRequires:	kf5-extra-cmake-modules
 BuildRequires:	kf5-karchive-devel
 BuildRequires:	kf5-kauth-devel
@@ -56,7 +56,7 @@ BuildRequires:	kf5-kwindowsystem-devel
 BuildRequires:	kf5-kxmlgui-devel
 BuildRequires:	kf5-solid-devel
 BuildRequires:	kf5-sonnet-devel
-BuildRequires:	phonon-devel
+BuildRequires:	phonon-qt5-devel
 BuildRequires:	qt5-build
 BuildRequires:	qt5-qmake
 BuildRequires:	rpmbuild(macros) >= 1.129
