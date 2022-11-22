@@ -10,26 +10,19 @@
 Summary:	Krusader is a filemanager for KDE
 Summary(pl.UTF-8):	Krusader jest zarządcą plików dla KDE
 Name:		krusader
-Version:	2.7.2
+Version:	2.8.0
 Release:	1
 License:	GPL
 Group:		X11/Applications
-Source0:	http://download.kde.org/stable/%{name}/%{version}/%{name}-%{version}.tar.xz
-# Source0-md5:	dcccc3a5e956ad0b1b63f236c4f41a7f
+Source0:	http://download.kde.org/stable/krusader/%{version}/%{name}-%{version}.tar.xz
+# Source0-md5:	144af281a102f00847cbd598319d9a50
 URL:		http://www.krusader.org/
-#BuildRequires:	Qt3Support-devel
 BuildRequires:	Qt5Concurrent-devel
 BuildRequires:	Qt5DBus-devel
 BuildRequires:	Qt5Network-devel
 BuildRequires:	Qt5Xml-devel
-#BuildRequires:	QtDBus-devel
-#BuildRequires:	QtSvg-devel
-#BuildRequires:	automoc4
 BuildRequires:	cmake
 BuildRequires:	gettext-tools
-#%{?with_libkonq:BuildRequires:	kde4-kdebase-devel}
-#%{?with_libkjsembed:BuildRequires:	kde4-kdebindings-kjsembed-devel}
-#BuildRequires:	kde4-kdelibs-devel
 BuildRequires:	kf5-extra-cmake-modules
 BuildRequires:	kf5-karchive-devel
 BuildRequires:	kf5-kauth-devel
@@ -94,13 +87,13 @@ completely customizable, very user friendly, fast and damn good
 looking :-). You should give it a try.
 
 %description -l pl.UTF-8
-Krusader jest zarządcą plików dla KDE, wzorowanym na takich zarządcach
-"starej szkoły", jak Midnight Commander czy Norton Commander.
-Zaspokaja w zasadzie wszystkie podstawowe potrzeby w zarządzaniu
-plików, dodatkowo obsługuje archiwa, montowanie systemów plików, FTP i
-o wiele, wiele więcej. Jest (prawie) całkowicie ustawialny, bardzo
-przyjazny dla użytkownika, szybki i cholernie ładny :-). Powinieneś go
-wypróbować.
+Krusader jest zarządcą plików dla KDE, wzorowanym na takich
+zarządcach "starej szkoły", jak Midnight Commander czy Norton
+Commander. Zaspokaja w zasadzie wszystkie podstawowe potrzeby w
+zarządzaniu plików, dodatkowo obsługuje archiwa, montowanie
+systemów plików, FTP i o wiele, wiele więcej. Jest (prawie)
+całkowicie ustawialny, bardzo przyjazny dla użytkownika, szybki i
+cholernie ładny :-). Powinieneś go wypróbować.
 
 %prep
 %setup -q
@@ -110,6 +103,8 @@ install -d build
 cd build
 %cmake \
 	-DCMAKE_INSTALL_PREFIX=%{_prefix} \
+	-DHTML_INSTALL_DIR=%{_kdedocdir} \
+	-DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
 %if "%{_lib}" == "lib64"
 	-DLIB_SUFFIX=64 \
 %endif
@@ -131,29 +126,26 @@ install -d $RPM_BUILD_ROOT%{_desktopdir}
 # locolor icons are deprecated (see kde .spec-s)
 rm -f $RPM_BUILD_ROOT%{_iconsdir}/locolor/*/apps/*.png
 
-install -d $RPM_BUILD_ROOT%{_libdir}/qt5/plugins
-%{__mv} $RPM_BUILD_ROOT%{_libdir}/plugins/*.so $RPM_BUILD_ROOT%{_libdir}/qt5/plugins
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog FAQ README doc-extras/actions_tutorial.txt
+%doc AUTHORS ChangeLog README
 %attr(755,root,root) %{_bindir}/krusader
-%attr(755,root,root) %{_libdir}/qt5/plugins/*.so
+%{_libdir}/qt5/plugins/kf5/kio/kio_iso.so
+%{_libdir}/qt5/plugins/kf5/kio/kio_krarc.so
 %{_sysconfdir}/xdg/kio_isorc
 %{_datadir}/metainfo/org.kde.krusader.appdata.xml
 %{_datadir}/krusader
-%{_datadir}/kservices5/*.protocol
 %{_datadir}/kxmlgui5/krusader
 %{_desktopdir}/*.desktop
-%{_docdir}/HTML/*/krusader
 %{_iconsdir}/hicolor/*/*/*
-%{_mandir}/man1/krusader.1.gz
-%lang(de) %{_mandir}/de/man1/krusader.1.gz
-%lang(it) %{_mandir}/it/man1/krusader.1.gz
-%lang(nl) %{_mandir}/nl/man1/krusader.1.gz
-%lang(pt) %{_mandir}/pt/man1/krusader.1.gz
-%lang(sv) %{_mandir}/sv/man1/krusader.1.gz
-%lang(uk) %{_mandir}/uk/man1/krusader.1.gz
+%{_mandir}/man1/krusader.1*
+%lang(ca) %{_mandir}/ca/man1/krusader.1*
+%lang(de) %{_mandir}/de/man1/krusader.1*
+%lang(it) %{_mandir}/it/man1/krusader.1*
+%lang(nl) %{_mandir}/nl/man1/krusader.1*
+%lang(pt) %{_mandir}/pt/man1/krusader.1*
+%lang(sv) %{_mandir}/sv/man1/krusader.1*
+%lang(uk) %{_mandir}/uk/man1/krusader.1*
