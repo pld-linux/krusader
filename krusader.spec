@@ -20,6 +20,7 @@ URL:		http://www.krusader.org/
 BuildRequires:	Qt5Concurrent-devel
 BuildRequires:	Qt5DBus-devel
 BuildRequires:	Qt5Network-devel
+BuildRequires:	Qt5PrintSupport-devel
 BuildRequires:	Qt5Xml-devel
 BuildRequires:	cmake
 BuildRequires:	gettext-tools
@@ -87,13 +88,13 @@ completely customizable, very user friendly, fast and damn good
 looking :-). You should give it a try.
 
 %description -l pl.UTF-8
-Krusader jest zarządcą plików dla KDE, wzorowanym na takich
-zarządcach "starej szkoły", jak Midnight Commander czy Norton
-Commander. Zaspokaja w zasadzie wszystkie podstawowe potrzeby w
-zarządzaniu plików, dodatkowo obsługuje archiwa, montowanie
-systemów plików, FTP i o wiele, wiele więcej. Jest (prawie)
-całkowicie ustawialny, bardzo przyjazny dla użytkownika, szybki i
-cholernie ładny :-). Powinieneś go wypróbować.
+Krusader jest zarządcą plików dla KDE, wzorowanym na takich zarządcach
+"starej szkoły", jak Midnight Commander czy Norton Commander.
+Zaspokaja w zasadzie wszystkie podstawowe potrzeby w zarządzaniu
+plików, dodatkowo obsługuje archiwa, montowanie systemów plików, FTP i
+o wiele, wiele więcej. Jest (prawie) całkowicie ustawialny, bardzo
+przyjazny dla użytkownika, szybki i cholernie ładny :-). Powinieneś go
+wypróbować.
 
 %prep
 %setup -q
