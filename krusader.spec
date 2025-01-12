@@ -33,6 +33,7 @@ BuildRequires:	kf6-kcompletion-devel
 BuildRequires:	kf6-kconfig-devel
 BuildRequires:	kf6-kconfigwidgets-devel
 BuildRequires:	kf6-kcoreaddons-devel
+BuildRequires:	kf6-kcrash-devel
 BuildRequires:	kf6-kdoctools-devel
 BuildRequires:	kf6-kguiaddons-devel
 BuildRequires:	kf6-ki18n-devel
@@ -43,6 +44,7 @@ BuildRequires:	kf6-kjobwidgets-devel
 BuildRequires:	kf6-knotifications-devel
 BuildRequires:	kf6-kparts-devel
 BuildRequires:	kf6-kservice-devel
+BuildRequires:	kf6-kstatusnotifieritem-devel
 BuildRequires:	kf6-ktextwidgets-devel
 BuildRequires:	kf6-kwallet-devel
 BuildRequires:	kf6-kwidgetsaddons-devel
