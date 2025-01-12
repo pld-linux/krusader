@@ -106,10 +106,7 @@ wypróbować.
 	-G Ninja \
 	-DCMAKE_INSTALL_PREFIX=%{_prefix} \
 	-DKDE_INSTALL_DOCBUNDLEDIR=%{_kdedocdir} \
-	-DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
-%if "%{_lib}" == "lib64"
-	-DLIB_SUFFIX=64
-%endif
+	-DKDE_INSTALL_USE_QT_SYS_PATHS=ON
 %ninja_build -C build
 
 %install
