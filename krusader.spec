@@ -35,6 +35,7 @@ BuildRequires:	kf6-kconfigwidgets-devel
 BuildRequires:	kf6-kcoreaddons-devel
 BuildRequires:	kf6-kcrash-devel
 BuildRequires:	kf6-kdoctools-devel
+BuildRequires:	kf6-kglobalaccel-devel
 BuildRequires:	kf6-kguiaddons-devel
 BuildRequires:	kf6-ki18n-devel
 BuildRequires:	kf6-kiconthemes-devel
